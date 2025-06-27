@@ -17,11 +17,18 @@ function App() {
     experience: false,
   });
 
+  const [education, setEducation] = useState({
+    schoolName: "",
+    programTitle: "",
+    programDate: "",
+  });
+
   return (
     <div className="app">
-      <h1>CV Builder</h1>
       <div className="wrapper">
-        <div className="input">
+        <h1>CV Builder</h1>
+
+        <section>
           <GeneralInfo
             fullName={generalInfo.fullName}
             email={generalInfo.email}
@@ -29,18 +36,17 @@ function App() {
             setInfo={setGeneralInfo}
             setShowOutput={setShowOutput}
           />
-          <Education />
-          <Experience />
-        </div>
-        <div className="output">
-          {showOutput.generalInfo && (
-            <div>
-              <h1>{generalInfo.fullName}</h1>
-              <p>{generalInfo.email}</p>
-              <p>{generalInfo.phone}</p>
-            </div>
-          )}
-        </div>
+        </section>
+        <section>
+          <Education
+            schoolName={education.schoolName}
+            programTitle={education.programTitle}
+            programDate={education.programDate}
+            setEducation={setEducation}
+            setShowOutput={setShowOutput}
+          />
+        </section>
+        <Experience />
       </div>
     </div>
   );
