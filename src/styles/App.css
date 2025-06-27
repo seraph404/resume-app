@@ -4,10 +4,10 @@
   padding: 0;
 }
 .wrapper {
-  display: flex;
-}
-.wrapper > div {
-  border: 1px solid black;
   padding: 2em;
   width: 50%;
+}
+section {
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
