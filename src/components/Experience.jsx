@@ -7,9 +7,8 @@ function Experience({
   startDate,
   endDate,
   setExperience,
+  isEditing,
 }) {
-  const [isEditing, setIsEditing] = useState(true);
-
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -27,11 +26,6 @@ function Experience({
       ...previousState,
       responsibilities: newResponsibilities,
     }));
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setIsEditing(false);
   }
 
   function addInput(index) {
@@ -125,9 +119,6 @@ function Experience({
               required
             />
           </div>
-          <div>
-            <input type="submit" value="Update" onClick={handleSubmit}></input>
-          </div>
         </>
       ) : (
         <>
@@ -140,7 +131,6 @@ function Experience({
           </ul>
           <p>{startDate}</p>
           <p>{endDate}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
         </>
       )}
     </div>

@@ -6,9 +6,8 @@ function Education({
   programDate,
   setEducation,
   setShowOutput,
+  isEditing,
 }) {
-  const [isEditing, setIsEditing] = useState(true);
-
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -16,11 +15,6 @@ function Education({
       ...previousState,
       [name]: value,
     }));
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setIsEditing(false);
   }
 
   return (
@@ -58,16 +52,14 @@ function Education({
               required
             />
           </div>
-          <div>
-            <input type="submit" value="Update" onClick={handleSubmit}></input>
-          </div>
         </>
       ) : (
         <>
-          <p>{schoolName}</p>
-          <p>{programTitle}</p>
-          <p>{programDate}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
+          <div className="right-column">
+            <p>{schoolName}</p>
+            <p>{programTitle}</p>
+            <p>{programDate}</p>
+          </div>
         </>
       )}
     </div>

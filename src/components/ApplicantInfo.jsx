@@ -1,0 +1,78 @@
+import { useState } from "react";
+
+function ApplicantInfo({
+  fullName,
+  jobTitle,
+  summary,
+  setApplicantInfo,
+  isEditing,
+}) {
+  function setApplicantInfo(event) {
+    const { name, value } = event.target;
+
+    setInfo((previousState) => ({
+      ...previousState,
+      [name]: value,
+    }));
+  }
+
+  return (
+    <>
+      {isEditing ? (
+        <>
+          <h2>Applicant Info</h2>
+          <fieldset>
+            <legend>Applicant info</legend>
+            <div>
+              <label>Full name</label>
+              <br />
+              <input
+                type="text"
+                name="fullName"
+                value={fullName}
+                onChange={setApplicantInfo}
+                required
+              />
+            </div>
+            <div>
+              <label>Job title</label>
+              <br />
+              <input
+                type="text"
+                name="jobTitle"
+                value={jobTitle}
+                onChange={setApplicantInfo}
+                required
+              />
+            </div>
+            <div>
+              <label>Summary</label>
+              <br />
+              <textarea
+                name="summary"
+                value={summary}
+                onChange={setApplicantInfo}
+                required
+              ></textarea>
+            </div>
+          </fieldset>
+        </>
+      ) : (
+        <>
+          {" "}
+          <div className="applicant-info section">
+            <h2 class="info">{fullName}</h2>
+            <div class="job-title info">
+              <p>{jobTitle}</p>
+            </div>
+            <div class="summary info">
+              <p>{summary}</p>
+            </div>
+          </div>
+        </>
+      )}
+    </>
+  );
+}
+
+export default ApplicantInfo;

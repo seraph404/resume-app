@@ -1,18 +1,27 @@
 import { useState } from "react";
-import GeneralInfo from "./components/GeneralInfo";
+
+import ApplicantInfo from "./components/ApplicantInfo";
+import ContactInfo from "./components/ContactInfo";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
+
 import "./styles/App.css";
 
 function App() {
-  const [generalInfo, setGeneralInfo] = useState({
+  const [applicantInfo, setApplicantInfo] = useState({
     fullName: "",
+    jobTitle: "",
+    summary: "",
+  });
+
+  const [contactInfo, setContactInfo] = useState({
     email: "",
     phone: "",
   });
 
   const [showOutput, setShowOutput] = useState({
-    generalInfo: false,
+    applicantInfo: false,
+    contactInfo: false,
     education: false,
     experience: false,
   });
@@ -31,38 +40,54 @@ function App() {
     endDate: "",
   });
 
+  const [isEditing, setIsEditing] = useState(true);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setIsEditing(false);
+  }
+
   return (
-    <div className="app">
-      <div className="wrapper">
-        <section>
-          <GeneralInfo
-            fullName={generalInfo.fullName}
-            email={generalInfo.email}
-            phone={generalInfo.phone}
-            setInfo={setGeneralInfo}
-            setShowOutput={setShowOutput}
-          />
-        </section>
-        <section>
-          <h2>Education</h2>
-          <Education
-            schoolName={education.schoolName}
-            programTitle={education.programTitle}
-            programDate={education.programDate}
-            setEducation={setEducation}
-            setShowOutput={setShowOutput}
-          />
-        </section>
-        <h2>Experience</h2>
-        <Experience
-          companyName={experience.companyName}
-          positionTitle={experience.positionTitle}
-          responsibilities={experience.responsibilities}
-          startDate={experience.startDate}
-          endDate={experience.endDate}
-          setExperience={setExperience}
-        />
-      </div>
+    <div className="resume-container">
+      <ApplicantInfo
+        fullName={applicantInfo.fullName}
+        jobTitle={applicantInfo.jobTitle}
+        summary={applicantInfo.summary}
+        setApplicantInfo={setApplicantInfo}
+        setShowOutput={setShowOutput}
+        isEditing={isEditing}
+      />
+      <ContactInfo
+        email={contactInfo.email}
+        phone={contactInfo.phone}
+        setContactInfo={setContactInfo}
+        setShowOutput={setShowOutput}
+        isEditing={isEditing}
+      />
+      <h2>Education</h2>
+      <Education
+        schoolName={education.schoolName}
+        programTitle={education.programTitle}
+        programDate={education.programDate}
+        setEducation={setEducation}
+        setShowOutput={setShowOutput}
+        isEditing={isEditing}
+      />
+      <h2>Experience</h2>
+      <Experience
+        companyName={experience.companyName}
+        positionTitle={experience.positionTitle}
+        responsibilities={experience.responsibilities}
+        startDate={experience.startDate}
+        endDate={experience.endDate}
+        setExperience={setExperience}
+        isEditing={isEditing}
+      />
+      {isEditing ? (
+        <button onClick={() => setIsEditing(false)}>Save</button>
+      ) : (
+        <button onClick={() => setIsEditing(true)}>Edit</button>
+      )}
     </div>
   );
 }

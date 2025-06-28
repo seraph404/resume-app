@@ -1,13 +1,60 @@
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+html {
+  font-family: "sans-serif";
+}
+
+.resume-container {
+  border: 1px solid black;
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 1fr;
+  grid-template-areas: "left right";
+}
+
+.applicant-info {
+  grid-area: right;
+}
+.applicant-info h2 {
+  font-size: 50px;
+}
+.job-title {
+  font-size: 30px;
+}
+
+.contact-info {
+  grid-area: left;
+}
+.education {
+  grid-area: right;
+}
+
+.section {
+  margin: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+.info {
+  margin-top: 20px;
+}
+
 .wrapper {
   padding: 2em;
-  width: 50%;
+}
+.wrapper fieldset {
+  padding: 10px;
+}
+
+.wrapper label {
+  font-weight: bold;
 }
 section {
   margin-bottom: 20px;
   margin-top: 20px;
-}
+} */
