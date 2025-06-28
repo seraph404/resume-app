@@ -17,10 +17,16 @@ function GeneralInfo({ fullName, email, phone, setInfo }) {
     setIsEditing(false);
   }
 
+  function formatPhoneNumber(phone) {
+    if (phone.length != 10) return phone;
+    return `${phone.slice(0, 3)}-${phone.slice(3, 6)}-${phone.slice(6)}`;
+  }
+
   return (
     <div>
       {isEditing ? (
         <>
+          <h2>General Info</h2>
           <div>
             <label>Full name:</label>{" "}
             <input
@@ -58,9 +64,9 @@ function GeneralInfo({ fullName, email, phone, setInfo }) {
         </>
       ) : (
         <>
-          <h1>{fullName}</h1>
+          <h2>{fullName}</h2>
           <p>{email}</p>
-          <p>{phone}</p>
+          <p>{formatPhoneNumber(phone)}</p>
           <button onClick={() => setIsEditing(true)}>Edit</button>
         </>
       )}
