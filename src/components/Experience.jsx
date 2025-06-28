@@ -131,7 +131,6 @@ function Experience({
         </>
       ) : (
         <>
-          <h2>Experience</h2>
           <p>{companyName}</p>
           <p>{positionTitle}</p>
           <ul>

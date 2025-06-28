@@ -53,7 +53,7 @@ function GeneralInfo({ fullName, email, phone, setInfo }) {
             />
           </div>
           <div>
-            <input type="submit" value="Submit" onClick={handleSubmit} />
+            <input type="submit" value="Update" onClick={handleSubmit} />
           </div>
         </>
       ) : (

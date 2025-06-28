@@ -64,7 +64,6 @@ function Education({
         </>
       ) : (
         <>
-          <h2>Education</h2>
           <p>{schoolName}</p>
           <p>{programTitle}</p>
           <p>{programDate}</p>

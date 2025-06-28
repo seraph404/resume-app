@@ -37,6 +37,7 @@ function App() {
         <h1>CV Builder</h1>
 
         <section>
+          <h2>General information</h2>
           <GeneralInfo
             fullName={generalInfo.fullName}
             email={generalInfo.email}
@@ -46,6 +47,7 @@ function App() {
           />
         </section>
         <section>
+          <h2>Education</h2>
           <Education
             schoolName={education.schoolName}
             programTitle={education.programTitle}
@@ -54,6 +56,7 @@ function App() {
             setShowOutput={setShowOutput}
           />
         </section>
+        <h2>Experience</h2>
         <Experience
           companyName={experience.companyName}
           positionTitle={experience.positionTitle}
