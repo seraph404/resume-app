@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-function ContactInfo({ email, phone, setContactInfo, isEditing }) {
-  function setContactInfo(event) {
+function ContactInfo({ email, phone, website, setContactInfo, isEditing }) {
+  function handleContactChange(event) {
     const { name, value } = event.target;
 
-    setInfo((previousState) => ({
+    setContactInfo((previousState) => ({
       ...previousState,
       [name]: value,
     }));
@@ -28,7 +28,7 @@ function ContactInfo({ email, phone, setContactInfo, isEditing }) {
                 type="email"
                 name="email"
                 value={email}
-                onChange={setContactInfo}
+                onChange={handleContactChange}
                 required
               />
             </div>
@@ -39,9 +39,19 @@ function ContactInfo({ email, phone, setContactInfo, isEditing }) {
                 type="tel"
                 name="phone"
                 value={phone}
-                onChange={setContactInfo}
+                onChange={handleContactChange}
                 maxLength="10"
                 required
+              />
+            </div>
+            <div>
+              <label>Website</label>
+              <br />
+              <input
+                type="url"
+                name="website"
+                value={website}
+                onChange={handleContactChange}
               />
             </div>
           </fieldset>
@@ -52,6 +62,7 @@ function ContactInfo({ email, phone, setContactInfo, isEditing }) {
           <div className="contact-info section">
             <p>{email}</p>
             <p>{formatPhoneNumber(phone)}</p>
+            <p>{website}</p>
           </div>
         </>
       )}
