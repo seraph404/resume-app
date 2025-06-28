@@ -98,8 +98,12 @@ function Experience({
                       handleResponsibilityChange(index, e.target.value)
                     }
                   />
-                  <button onClick={() => addInput(index)}>+</button>
-                  <button onClick={() => removeInput(index)}>x</button>
+                  <button type="button" onClick={() => addInput(index)}>
+                    +
+                  </button>
+                  <button type="button" onClick={() => removeInput(index)}>
+                    x
+                  </button>
                 </div>
               ))}
             </div>
