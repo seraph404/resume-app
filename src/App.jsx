@@ -34,10 +34,7 @@ function App() {
   return (
     <div className="app">
       <div className="wrapper">
-        <h1>CV Builder</h1>
-
         <section>
-          <h2>General information</h2>
           <GeneralInfo
             fullName={generalInfo.fullName}
             email={generalInfo.email}
