@@ -7,10 +7,10 @@ function ApplicantInfo({
   setApplicantInfo,
   isEditing,
 }) {
-  function setApplicantInfo(event) {
+  function handleApplicantChange(event) {
     const { name, value } = event.target;
 
-    setInfo((previousState) => ({
+    setApplicantInfo((previousState) => ({
       ...previousState,
       [name]: value,
     }));
@@ -29,7 +29,7 @@ function ApplicantInfo({
                 type="text"
                 name="fullName"
                 value={fullName}
-                onChange={setApplicantInfo}
+                onChange={handleApplicantChange}
                 required
               />
             </div>
@@ -40,7 +40,7 @@ function ApplicantInfo({
                 type="text"
                 name="jobTitle"
                 value={jobTitle}
-                onChange={setApplicantInfo}
+                onChange={handleApplicantChange}
                 required
               />
             </div>
@@ -50,7 +50,7 @@ function ApplicantInfo({
               <textarea
                 name="summary"
                 value={summary}
-                onChange={setApplicantInfo}
+                onChange={handleApplicantChange}
                 required
               ></textarea>
             </div>
