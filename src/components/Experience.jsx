@@ -63,62 +63,69 @@ function Experience({
     <div>
       {isEditing ? (
         <>
-          <div>
-            <label>Company name</label>{" "}
-            <input
-              type="text"
-              name="companyName"
-              value={companyName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Position title:</label>{" "}
-            <input
-              type="text"
-              name="positionTitle"
-              value={positionTitle}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Responsibilities</label>
-            <br />
-            {responsibilities.map((item, index) => (
-              <div key={index}>
-                <input
-                  value={item}
-                  onChange={(e) =>
-                    handleResponsibilityChange(index, e.target.value)
-                  }
-                />
-                <button onClick={() => addInput(index)}>+</button>
-                <button onClick={() => removeInput(index)}>x</button>
-              </div>
-            ))}
-          </div>
-          <div>
-            <label>Start date:</label>{" "}
-            <input
-              type="date"
-              name="startDate"
-              value={startDate}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>End date:</label>{" "}
-            <input
-              type="date"
-              name="endDate"
-              value={endDate}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          <fieldset>
+            <legend>Experience</legend>
+            <div>
+              <label>Company name</label>
+              <br />
+              <input
+                type="text"
+                name="companyName"
+                value={companyName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label>Position title</label>
+              <br />
+              <input
+                type="text"
+                name="positionTitle"
+                value={positionTitle}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label>Responsibilities</label>
+              <br />
+              {responsibilities.map((item, index) => (
+                <div key={index}>
+                  <input
+                    value={item}
+                    onChange={(e) =>
+                      handleResponsibilityChange(index, e.target.value)
+                    }
+                  />
+                  <button onClick={() => addInput(index)}>+</button>
+                  <button onClick={() => removeInput(index)}>x</button>
+                </div>
+              ))}
+            </div>
+            <div>
+              <label>Start date</label>
+              <br />
+              <input
+                type="date"
+                name="startDate"
+                value={startDate}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label>End date</label>
+              <br />
+              <input
+                type="date"
+                name="endDate"
+                value={endDate}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </fieldset>
         </>
       ) : (
         <>

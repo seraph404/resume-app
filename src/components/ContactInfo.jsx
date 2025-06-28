@@ -19,7 +19,6 @@ function ContactInfo({ email, phone, setContactInfo, isEditing }) {
     <>
       {isEditing ? (
         <>
-          <h2>General Info</h2>
           <fieldset>
             <legend>Contact info</legend>
             <div>
@@ -51,7 +50,6 @@ function ContactInfo({ email, phone, setContactInfo, isEditing }) {
         <>
           {" "}
           <div className="contact-info section">
-            <h2>Contact</h2>
             <p>{email}</p>
             <p>{formatPhoneNumber(phone)}</p>
           </div>

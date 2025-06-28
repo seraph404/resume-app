@@ -48,7 +48,8 @@ function App() {
   }
 
   return (
-    <div className="resume-container">
+    <div className={isEditing ? "form-container" : "resume-container"}>
+      {isEditing && <h1>CV Creator</h1>}
       <ApplicantInfo
         fullName={applicantInfo.fullName}
         jobTitle={applicantInfo.jobTitle}
@@ -64,7 +65,6 @@ function App() {
         setShowOutput={setShowOutput}
         isEditing={isEditing}
       />
-      <h2>Education</h2>
       <Education
         schoolName={education.schoolName}
         programTitle={education.programTitle}
@@ -73,7 +73,6 @@ function App() {
         setShowOutput={setShowOutput}
         isEditing={isEditing}
       />
-      <h2>Experience</h2>
       <Experience
         companyName={experience.companyName}
         positionTitle={experience.positionTitle}

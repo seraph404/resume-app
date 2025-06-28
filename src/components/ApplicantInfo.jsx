@@ -20,7 +20,6 @@ function ApplicantInfo({
     <>
       {isEditing ? (
         <>
-          <h2>Applicant Info</h2>
           <fieldset>
             <legend>Applicant info</legend>
             <div>
