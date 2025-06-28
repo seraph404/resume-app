@@ -23,6 +23,14 @@ function App() {
     programDate: "",
   });
 
+  const [experience, setExperience] = useState({
+    companyName: "",
+    positionTitle: "",
+    responsibilities: [""],
+    startDate: "",
+    endDate: "",
+  });
+
   return (
     <div className="app">
       <div className="wrapper">
@@ -46,7 +54,14 @@ function App() {
             setShowOutput={setShowOutput}
           />
         </section>
-        <Experience />
+        <Experience
+          companyName={experience.companyName}
+          positionTitle={experience.positionTitle}
+          responsibilities={experience.responsibilities}
+          startDate={experience.startDate}
+          endDate={experience.endDate}
+          setExperience={setExperience}
+        />
       </div>
     </div>
   );
