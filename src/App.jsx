@@ -4,6 +4,7 @@ import ApplicantInfo from "./components/ApplicantInfo";
 import ContactInfo from "./components/ContactInfo";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
+import Skills from "./components/Skills";
 
 import "./styles/App.css";
 
@@ -40,6 +41,8 @@ function App() {
     startDate: "",
     endDate: "",
   });
+
+  const [skills, setSkills] = useState([""]);
 
   const [isEditing, setIsEditing] = useState(true);
 
@@ -84,6 +87,7 @@ function App() {
           setExperience={setExperience}
           isEditing={isEditing}
         />
+        <Skills skills={skills} setSkills={setSkills} isEditing={isEditing} />
       </>
     );
   }
@@ -91,6 +95,7 @@ function App() {
   return isEditing ? (
     <form
       className="form-container"
+      noValidate
       onSubmit={(e) => {
         e.preventDefault();
         setIsEditing(false);
