@@ -17,6 +17,7 @@ function App() {
   const [contactInfo, setContactInfo] = useState({
     email: "",
     phone: "",
+    website: "",
   });
 
   const [showOutput, setShowOutput] = useState({
@@ -47,46 +48,62 @@ function App() {
     setIsEditing(false);
   }
 
-  return (
-    <div className={isEditing ? "form-container" : "resume-container"}>
-      {isEditing && <h1>CV Creator</h1>}
-      <ApplicantInfo
-        fullName={applicantInfo.fullName}
-        jobTitle={applicantInfo.jobTitle}
-        summary={applicantInfo.summary}
-        setApplicantInfo={setApplicantInfo}
-        setShowOutput={setShowOutput}
-        isEditing={isEditing}
-      />
-      <ContactInfo
-        email={contactInfo.email}
-        phone={contactInfo.phone}
-        setContactInfo={setContactInfo}
-        setShowOutput={setShowOutput}
-        isEditing={isEditing}
-      />
-      <Education
-        schoolName={education.schoolName}
-        programTitle={education.programTitle}
-        programDate={education.programDate}
-        setEducation={setEducation}
-        setShowOutput={setShowOutput}
-        isEditing={isEditing}
-      />
-      <Experience
-        companyName={experience.companyName}
-        positionTitle={experience.positionTitle}
-        responsibilities={experience.responsibilities}
-        startDate={experience.startDate}
-        endDate={experience.endDate}
-        setExperience={setExperience}
-        isEditing={isEditing}
-      />
-      {isEditing ? (
-        <button onClick={() => setIsEditing(false)}>Save</button>
-      ) : (
-        <button onClick={() => setIsEditing(true)}>Edit</button>
-      )}
+  function renderSections() {
+    return (
+      <>
+        <ApplicantInfo
+          fullName={applicantInfo.fullName}
+          jobTitle={applicantInfo.jobTitle}
+          summary={applicantInfo.summary}
+          setApplicantInfo={setApplicantInfo}
+          setShowOutput={setShowOutput}
+          isEditing={isEditing}
+        />
+        <ContactInfo
+          email={contactInfo.email}
+          phone={contactInfo.phone}
+          website={contactInfo.website}
+          setContactInfo={setContactInfo}
+          setShowOutput={setShowOutput}
+          isEditing={isEditing}
+        />
+        <Education
+          schoolName={education.schoolName}
+          programTitle={education.programTitle}
+          programDate={education.programDate}
+          setEducation={setEducation}
+          setShowOutput={setShowOutput}
+          isEditing={isEditing}
+        />
+        <Experience
+          companyName={experience.companyName}
+          positionTitle={experience.positionTitle}
+          responsibilities={experience.responsibilities}
+          startDate={experience.startDate}
+          endDate={experience.endDate}
+          setExperience={setExperience}
+          isEditing={isEditing}
+        />
+      </>
+    );
+  }
+
+  return isEditing ? (
+    <form
+      className="form-container"
+      onSubmit={(e) => {
+        e.preventDefault();
+        setIsEditing(false);
+      }}
+    >
+      <h1>CV Creator</h1>
+      {renderSections()}
+      <button type="submit">Save</button>
+    </form>
+  ) : (
+    <div className="resume-container">
+      {renderSections()}
+      <button onClick={() => setIsEditing(true)}>Edit</button>
     </div>
   );
 }
