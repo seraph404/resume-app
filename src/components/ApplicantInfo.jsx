@@ -65,6 +65,7 @@ function ApplicantInfo({
               <p>{jobTitle}</p>
             </div>
             <div class="summary info">
+              <h3>Summary</h3>
               <p>{summary}</p>
             </div>
           </div>

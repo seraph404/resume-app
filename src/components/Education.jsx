@@ -18,7 +18,7 @@ function Education({
   }
 
   return (
-    <div>
+    <>
       {isEditing ? (
         <>
           <fieldset>
@@ -61,14 +61,15 @@ function Education({
         </>
       ) : (
         <>
-          <div className="right-column">
+          <div className="education section">
+            <h3>Education</h3>
             <p>{schoolName}</p>
             <p>{programTitle}</p>
             <p>{programDate}</p>
           </div>
         </>
       )}
-    </div>
+    </>
   );
 }
 
