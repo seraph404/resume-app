@@ -60,9 +60,23 @@ function ContactInfo({ email, phone, website, setContactInfo, isEditing }) {
         <>
           {" "}
           <div className="contact-info section">
-            <p>{email}</p>
-            <p>{formatPhoneNumber(phone)}</p>
-            <p>{website}</p>
+            <h2>Contact</h2>
+            <p>
+              <strong>Email</strong>
+              <br />
+              {email}
+            </p>
+
+            <p>
+              <strong>Phone</strong>
+              <br />
+              {formatPhoneNumber(phone)}
+            </p>
+            <p>
+              <strong>Website</strong>
+              <br />
+              {website}
+            </p>
           </div>
         </>
       )}
