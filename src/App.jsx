@@ -70,14 +70,6 @@ function App() {
           setShowOutput={setShowOutput}
           isEditing={isEditing}
         />
-        <Education
-          schoolName={education.schoolName}
-          programTitle={education.programTitle}
-          programDate={education.programDate}
-          setEducation={setEducation}
-          setShowOutput={setShowOutput}
-          isEditing={isEditing}
-        />
         <Experience
           companyName={experience.companyName}
           positionTitle={experience.positionTitle}
@@ -85,6 +77,14 @@ function App() {
           startDate={experience.startDate}
           endDate={experience.endDate}
           setExperience={setExperience}
+          isEditing={isEditing}
+        />
+        <Education
+          schoolName={education.schoolName}
+          programTitle={education.programTitle}
+          programDate={education.programDate}
+          setEducation={setEducation}
+          setShowOutput={setShowOutput}
           isEditing={isEditing}
         />
         <Skills skills={skills} setSkills={setSkills} isEditing={isEditing} />
@@ -108,7 +108,9 @@ function App() {
   ) : (
     <div className="resume-container">
       {renderSections()}
-      <button onClick={() => setIsEditing(true)}>Edit</button>
+      <button id="edit-button" onClick={() => setIsEditing(true)}>
+        Edit
+      </button>
     </div>
   );
 }
