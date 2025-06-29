@@ -25,7 +25,7 @@ function Skills({ skills, setSkills, isEditing }) {
   }
 
   return (
-    <div>
+    <>
       {isEditing ? (
         <>
           <fieldset>
@@ -36,30 +36,38 @@ function Skills({ skills, setSkills, isEditing }) {
               {skills.map((item, index) => (
                 <div key={index}>
                   <input
+                    type="text"
+                    className="dynamic"
                     value={item}
                     onChange={(e) => handleSkillsChange(index, e.target.value)}
                   />
-                  <button type="button" onClick={() => addInput(index)}>
-                    +
-                  </button>
-                  <button type="button" onClick={() => removeInput(index)}>
-                    x
-                  </button>
                 </div>
               ))}
+            </div>
+            <div className="buttons">
+              <button type="button" onClick={() => addInput(skills.length - 1)}>
+                Add Row
+              </button>
+              <button
+                type="button"
+                onClick={() => removeInput(skills.length - 1)}
+              >
+                Remove Row
+              </button>
             </div>
           </fieldset>
         </>
       ) : (
-        <>
+        <div class="skills section">
+          <h2>Skills</h2>
           <ul>
             {skills.map((skill, index) => (
               <li key={index}>{skill}</li>
             ))}
           </ul>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

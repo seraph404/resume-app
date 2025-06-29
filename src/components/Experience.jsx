@@ -41,6 +41,18 @@ function Experience({
     }));
   }
 
+  function formatDate(date) {
+    if (!date) return;
+    const dateObj = new Date(date);
+
+    const formatted = new Intl.DateTimeFormat("en-US", {
+      month: "long",
+      year: "numeric",
+    }).format(dateObj);
+
+    return formatted;
+  }
+
   function removeInput(index) {
     console.log(index);
     // clones the state array
@@ -60,7 +72,7 @@ function Experience({
   }
 
   return (
-    <div>
+    <>
       {isEditing ? (
         <>
           <fieldset>
@@ -93,19 +105,30 @@ function Experience({
               {responsibilities.map((item, index) => (
                 <div key={index}>
                   <input
+                    type="text"
+                    className="dynamic"
                     value={item}
                     onChange={(e) =>
                       handleResponsibilityChange(index, e.target.value)
                     }
                   />
-                  <button type="button" onClick={() => addInput(index)}>
-                    +
-                  </button>
-                  <button type="button" onClick={() => removeInput(index)}>
-                    x
-                  </button>
                 </div>
               ))}
+
+              <div class="buttons">
+                <button
+                  type="button"
+                  onClick={() => addInput(responsibilities.length - 1)}
+                >
+                  Add Row
+                </button>
+                <button
+                  type="button"
+                  onClick={() => removeInput(responsibilities.length - 1)}
+                >
+                  Remove Row
+                </button>
+              </div>
             </div>
             <div>
               <label>Start date</label>
@@ -132,19 +155,27 @@ function Experience({
           </fieldset>
         </>
       ) : (
-        <>
-          <p>{companyName}</p>
-          <p>{positionTitle}</p>
+        <div className="experience section">
+          <h3>Work experience</h3>
+          <div class="position info">
+            <p>
+              {positionTitle} @ {companyName}
+            </p>
+          </div>
+          <div class="position-dates info">
+            <p>
+              {formatDate(startDate)} - {formatDate(endDate)}
+            </p>
+          </div>
+          <strong class="responsibilities">Responsibilities:</strong>
           <ul>
             {responsibilities.map((responsibility, index) => (
               <li key={index}>{responsibility}</li>
             ))}
           </ul>
-          <p>{startDate}</p>
-          <p>{endDate}</p>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 
